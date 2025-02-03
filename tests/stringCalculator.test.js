@@ -44,3 +44,7 @@ test("returns 1 when input is '1'", () => {
     expect(add("//[***]\n1***2***3")).toBe(6);
   });
   
+  test("handles multiple delimiters", () => {
+    expect(add("//[*][%]\n1*2%3")).toBe(6); 
+  });
+  
