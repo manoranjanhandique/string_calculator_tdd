@@ -27,4 +27,8 @@ test("returns 1 when input is '1'", () => {
   test("supports custom delimiter with a different character", () => {
     expect(add("//|\n2|3|4")).toBe(9);
   });
+
+  test("throws an error when a negative number is passed", () => {
+    expect(() => add("1,-2,3")).toThrow("negative numbers not allowed -2");
+  });
   
