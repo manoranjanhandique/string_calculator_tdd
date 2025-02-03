@@ -19,7 +19,9 @@ const add = (numbers) => {
     throw new Error(`Negative numbers not allowed ${negatives.join(",")}`);
   }
 
-  return numArray.reduce((sum, num) => sum + num, 0);
+  const filteredNumbers = numArray.filter(num => num <= 1000);
+
+  return filteredNumbers.reduce((sum, num) => sum + num, 0);
 };
 
 module.exports = { add };
