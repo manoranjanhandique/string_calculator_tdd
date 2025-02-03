@@ -1,11 +1,11 @@
 const add = (numbers) => {
-  if (numbers === "") return 0;
-  const parts = numbers.split(",");
-
-  if (parts.length === 1) {
-    return parseInt(numbers);
+  if (numbers === "") {
+    return 0;
   }
 
-  return parseInt(parts[0]) + parseInt(parts[1]);
+  return numbers
+    .split(",")
+    .map(Number)
+    .reduce((sum, num) => sum + num, 0);
 };
 module.exports = { add };
