@@ -23,4 +23,8 @@ test("returns 1 when input is '1'", () => {
   test("supports custom delimiter defined at the beginning", () => {
     expect(add("//;\n1;2")).toBe(3);
   });
+
+  test("supports custom delimiter with a different character", () => {
+    expect(add("//|\n2|3|4")).toBe(9);
+  });
   
