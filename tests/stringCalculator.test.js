@@ -39,4 +39,8 @@ test("returns 1 when input is '1'", () => {
   test("numbers greater than 1000 are ignored in the sum", () => {
     expect(add("2,1001")).toBe(2);
   });
+
+  test("handles delimiters of any length", () => {
+    expect(add("//[***]\n1***2***3")).toBe(6);
+  });
   
