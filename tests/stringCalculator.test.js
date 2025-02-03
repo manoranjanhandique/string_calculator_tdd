@@ -31,8 +31,12 @@ test("returns 1 when input is '1'", () => {
   test("throws an error when a negative number is passed", () => {
     expect(() => add("1,-2,3")).toThrow("negative numbers not allowed -2");
   });
-  
+
   test("throws an error when multiple negative numbers are passed", () => {
-    expect(() => add("1,-2,-3,4,-5")).toThrow("negative numbers not allowed -2,-3,-5");
+    expect(() => add("1,-2,-3,4,-5")).toThrow("Negative numbers not allowed -2,-3,-5");
+  });
+
+  test("numbers greater than 1000 are ignored in the sum", () => {
+    expect(add("2,1001")).toBe(2);
   });
   
