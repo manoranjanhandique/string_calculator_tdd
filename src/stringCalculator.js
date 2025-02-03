@@ -7,8 +7,6 @@ const add = (numbers) => {
 
   if (numbers.slice(0, 2) === "//") {  
     const parts = numbers.split("\n");
-    // delimiter = parts[0].substring(2); 
-    // numbers = parts[1]; 
     delimiter = parts[0].slice(2);
     delimiter = delimiter.replace(/[\[\]]/g, "");
     numbers = parts.slice(1).join("\n");
