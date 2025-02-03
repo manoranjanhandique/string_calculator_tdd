@@ -4,6 +4,7 @@ const add = (numbers) => {
   }
 
   return numbers
+    .replace(/\n/g, ",")
     .split(",")
     .map(Number)
     .reduce((sum, num) => sum + num, 0);
