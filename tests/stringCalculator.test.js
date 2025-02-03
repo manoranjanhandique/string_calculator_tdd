@@ -15,3 +15,8 @@ test("returns 1 when input is '1'", () => {
   test("returns sum of multiple numbers", () => {
     expect(add("1,2,3,4")).toBe(10);
   });
+
+  test("handles new lines as delimiters along with commas", () => {
+    expect(add("1\n2,3")).toBe(6);
+  });
+  
