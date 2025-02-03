@@ -11,8 +11,13 @@ const add = (numbers) => {
     numbers = parts[1]; 
   }
 
-  const numArray = numbers.split(delimiter).map(Number).reduce((sum, num) => sum + num, 0);
+  const numArray = numbers.split(delimiter).map(Number);
+  for (let i = 0; i < numArray.length; i++) {
+    if (numArray[i] < 0) {
+      throw new Error(`negative numbers not allowed ${numArray[i]}`);
+    }
+  }
 
-  return numArray;
+  return numArray.reduce((sum, num) => sum + num, 0);
 };
 module.exports = { add };
