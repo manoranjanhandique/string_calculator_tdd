@@ -7,12 +7,21 @@ const add = (numbers) => {
 
   if (numbers.slice(0, 2) === "//") {  
     const parts = numbers.split("\n");
-    delimiter = parts[0].slice(2);
-    delimiter = delimiter.replace(/[\[\]]/g, "");
+    const delimiterLine = parts[0].slice(2);
+    
+    const delimitersArray = delimiterLine.match(/\[([^\]]+)\]/g);  
+    if (delimitersArray) {
+      delimiter = delimitersArray
+        .map(d => d.slice(1, -1))
+        .map(d => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'))
+        .join("|");
+    } else {
+      delimiter = delimiterLine;
+    }
     numbers = parts.slice(1).join("\n");
   }
 
-  const numArray = numbers.split(delimiter).map(Number);
+  const numArray = numbers.split(new RegExp(delimiter)).map(Number);
 
   const negatives = numArray.filter(num => num < 0);
 
