@@ -12,12 +12,14 @@ const add = (numbers) => {
   }
 
   const numArray = numbers.split(delimiter).map(Number);
-  for (let i = 0; i < numArray.length; i++) {
-    if (numArray[i] < 0) {
-      throw new Error(`negative numbers not allowed ${numArray[i]}`);
-    }
+
+  const negatives = numArray.filter(num => num < 0);
+
+  if (negatives.length > 0) {
+    throw new Error(`Negative numbers not allowed ${negatives.join(",")}`);
   }
 
   return numArray.reduce((sum, num) => sum + num, 0);
 };
+
 module.exports = { add };
