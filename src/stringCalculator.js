@@ -11,10 +11,8 @@ const add = (numbers) => {
     numbers = parts[1]; 
   }
 
-  const numArray = numbers.split(delimiter);
+  const numArray = numbers.split(delimiter).map(Number).reduce((sum, num) => sum + num, 0);
 
-  return numArray
-    .map(Number)
-    .reduce((sum, num) => sum + num, 0);
+  return numArray;
 };
 module.exports = { add };
