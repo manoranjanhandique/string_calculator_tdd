@@ -61,3 +61,9 @@ test("handles single multi-character delimiter", () => {
 test("handles default and multi-character delimiters", () => {
   expect(add("//[&&&][%%%]\n1&&&2%%%3")).toBe(6);
 });
+
+//1,2,as,4,b - Should throw "Invalid Tokens: as, b"
+
+test("throws an error Invalid Tokens: as, b", () => {
+  expect(() => add("1,2,as,4,b")).toThrow("Invalid Tokens: as, b");
+});

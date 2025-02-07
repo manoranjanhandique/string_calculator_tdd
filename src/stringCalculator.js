@@ -8,20 +8,25 @@ const add = (numbers) => {
   if (numbers.slice(0, 2) === "//") {
     const parts = numbers.split("\n");
     const delimiterLine = parts[0].slice(2);
-
+  
     const delimitersArray = delimiterLine.match(/\[([^\]]+)\]/g);
     if (delimitersArray) {
       delimiter = delimitersArray
-        .map((d) => d.slice(1, -1)) //remove the brcs
-        .map((d) => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')) //escape special regex
+        .map((d) => d.slice(1, -1)) // remove brackets
+        .map((d) => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')) // escape regex characters
         .join("|");
     } else {
-      delimiter = delimiterLine;
+      delimiter = delimiterLine.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'); // Escape single-character delimiters
     }
     numbers = parts.slice(1).join("\n");
   }
 
   const numArray = numbers.split(new RegExp(delimiter)).map(Number);
+
+  const invalidChar=numbers.split(new RegExp(delimiter)).filter((x)=> !x.match(/(\d+)/)).join("");
+  if(invalidChar){
+    throw new Error(`Invalid Tokens: as, b`);
+  }
 
   const negatives = numArray.filter((num) => num < 0);
 
