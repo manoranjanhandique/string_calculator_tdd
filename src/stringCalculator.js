@@ -12,8 +12,8 @@ const add = (numbers) => {
     const delimitersArray = delimiterLine.match(/\[([^\]]+)\]/g);
     if (delimitersArray) {
       delimiter = delimitersArray
-        .map((d) => d.slice(1, -1))
-        .map((d) => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'))
+        .map((d) => d.slice(1, -1)) //remove the brcs
+        .map((d) => d.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')) //escape special regex
         .join("|");
     } else {
       delimiter = delimiterLine;
